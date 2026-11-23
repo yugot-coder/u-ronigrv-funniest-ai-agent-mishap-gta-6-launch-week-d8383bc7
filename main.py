@@ -51,6 +51,8 @@ def main() -> None:
     entry = CANDIDATES[CHOSEN]
     if not entry.strip():
         raise SystemExit("entry must not be blank")
+    if "\n" in entry or "\r" in entry:
+        raise SystemExit("entry must be a single line")
     if len(entry) > MAX_CHARS:
         raise SystemExit(
             "entry is %d characters, over the %d limit" % (len(entry), MAX_CHARS)
